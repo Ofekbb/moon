@@ -3,7 +3,7 @@ FROM python:3.9.17-slim
 WORKDIR /app
 
 # Copy the Flask app to the container
-COPY . .
+COPY ./frontend .
 
 RUN ls -la
 
