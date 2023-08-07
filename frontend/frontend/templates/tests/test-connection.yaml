@@ -9,7 +9,6 @@ metadata:
 spec:
   containers:
     - name: wget
-      image: busybox
-      command: ['wget']
-      args: ['{{ include "frontend.fullname" . }}:{{ .Values.service.port }}']
+      image: alpine
+      command: ['wget', '-q','{{ .Values.env.url }}/ready']
   restartPolicy: Never
