@@ -2,8 +2,8 @@ from flask import Flask, render_template, request
 import requests, os
 
 
-# url_post = os.environ.get('POST_URL', 'http://localhost:5001/post')
-url_post = 'https://ofekbb/post'
+url_post = os.environ.get('POST_URL', 'https://ofekbb/post')
+# url_post = 'https://ofekbb/post'
 
 app = Flask(__name__)
 
@@ -11,7 +11,7 @@ app = Flask(__name__)
 def post():
     if request.method == 'POST':
         url = request.form['url']
-        post_response = requests.post(url_post, json=url)
+        post_response = requests.post(url_post, json={url})
         post_response_json = post_response.json()
         print("from front",post_response_json)
         return f'Resonse: {post_response_json}!'
