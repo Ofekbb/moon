@@ -5,6 +5,7 @@ import requests, os
 # url_post = os.environ.get('POST_URL', 'http://backend-svc.default.svc.cluster.local:5001/post')
 url_post = os.environ.get('POST_URL', 'http://127.0.0.1:5001/post')
 def_api = os.environ.get('DEFUALT_API', 'https://api.chucknorris.io/jokes/random')
+response = ""
 
 app = Flask(__name__)
 
@@ -19,8 +20,9 @@ def post():
         post_response = requests.post(url_post, json=url)
         post_response_json = post_response.json()
         print("from front",post_response_json)
-        return f'Resonse: {post_response_json}!'
-
+        # return f'Resonse: {post_response_json}!'
+        return render_template('index.html', response=post_response_json)
+    
     return render_template('index.html')
 
 
@@ -31,7 +33,7 @@ def uselessfact():
     post_response_json = post_response.json()
     post_response_split = post_response_json['text']
     print("from front",post_response_split)
-    return f'Response: {post_response_split}!'
+    return render_template('index.html', response=post_response_json)
 
 @app.route('/funnyfact', methods=['POST', 'GET'])
 def funnyfact():
@@ -40,7 +42,7 @@ def funnyfact():
     post_response_json = post_response.json()
     post_response_split = post_response_json['value']
     print("from front",post_response_split)
-    return f'Response: {post_response_split}!'
+    return render_template('index.html', response=post_response_json)
 
 
 
