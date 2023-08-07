@@ -33,7 +33,7 @@ def uselessfact():
     post_response_json = post_response.json()
     post_response_split = post_response_json['text']
     print("from front",post_response_split)
-    return render_template('index.html', response=post_response_json)
+    return render_template('index.html', response=post_response_split)
 
 @app.route('/funnyfact', methods=['POST', 'GET'])
 def funnyfact():
@@ -42,7 +42,7 @@ def funnyfact():
     post_response_json = post_response.json()
     post_response_split = post_response_json['value']
     print("from front",post_response_split)
-    return render_template('index.html', response=post_response_json)
+    return render_template('index.html', response=post_response_split)
 
 
 

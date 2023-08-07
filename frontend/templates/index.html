@@ -23,24 +23,46 @@
         h2 {
             font-size: 20px; 
             color: #333; 
+            text-decoration: underline #3d3a3a;
+        }
+        h3 {
+            font-size: 16px; 
+            color: #333; 
         }
 
         p {
             font-size: 20px; 
             color: #555; 
         }
-        div {
+        .div {
             background-color: #312d383d;
             font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 30vh;
-            width: 50vh;
+            width: 80vh;
             margin: 0;
             align-content: center;
             flex-direction: column;
             flex-wrap: nowrap;
+        }
+        .button-container {
+            display: inline-block;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            ;
+        }
+        .button:last-child {
+            margin-right: 0;
         }
     </style>
 </head>
@@ -48,11 +70,15 @@
     <h1>Enter URL</h1>
     <form method = "POST">
     <p><input type = "text" name = "url" value= {{ def_api }} /></p>
-    <p><input type = "submit" value = "submit" /></p>
+    <p><input class = "button" type = "submit" value = "submit" /></p>
     </form> 
-    <div>
+    <div class="button-container">
+    <button onclick="location.href = '{{ base_url }}/funnyfact';" id="funnyfact" class="button">ChuckFact</button>
+    <button onclick="location.href = '{{ base_url }}/uselessfact';" id="uselessfact" class="button">UselessFact</button>
+    </div>
+    <div class="div">
         <h2> Response</h2>
-        <a1 > {{ response }} </a1>
+        <h3 > {{ response }} </h3>
     </div>
 </body>
 </html>
