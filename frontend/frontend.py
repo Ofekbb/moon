@@ -2,7 +2,8 @@ from flask import Flask, render_template, request
 import requests, os
 
 
-url_post = os.environ.get('POST_URL', 'http://localhost:5001/post')
+# url_post = os.environ.get('POST_URL', 'http://localhost:5001/post')
+url_post = 'https://ofekbb/post'
 
 app = Flask(__name__)
 
