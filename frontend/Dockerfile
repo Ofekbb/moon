@@ -5,8 +5,6 @@ WORKDIR /app
 # Copy the Flask app to the container
 COPY ./frontend .
 
-RUN ls -la
-
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 

@@ -30,4 +30,4 @@ jobs:
           context: .
           file: ./${{ github.event.inputs.service_name }}/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.inputs.service_name }}:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/moon-${{ github.event.inputs.service_name }}:latest
