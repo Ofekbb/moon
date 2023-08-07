@@ -20,7 +20,6 @@ def post():
         post_response = requests.post(url_post, json=url)
         post_response_json = post_response.json()
         print("from front",post_response_json)
-        # return f'Resonse: {post_response_json}!'
         return render_template('index.html', response=post_response_json)
     
     return render_template('index.html')
