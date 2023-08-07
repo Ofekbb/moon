@@ -1,0 +1,44 @@
+name: Manual Service Job
+on:
+  workflow_dispatch:
+    inputs:
+      service_name:
+            description: 'Choose either "frontend" or "backend" to build'
+            required: true
+            default: 'frontend'
+
+jobs:
+  build:
+    name: Build and Deploy Service
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: Ofekbb/moon
+
+      # Add your build and deployment steps here, using the provided service_name input variable
+      - name: Check value is correct
+        run: |
+          if [ "${{ github.event.inputs.service_name }}" = "frontend" ]; then
+            docker build 
+            echo "Building frontend image..."
+          elif [ "${{ github.event.inputs.service_name }}" = "backend" ]; then
+            echo "Building backend image..."
+          else
+            echo "Invalid parameter. Please choose either 'frontend' or 'backend'."
+            exit 1
+          fi
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: ./${{ github.event.inputs.service_name }}/
+          platforms: linux/amd64,linux/arm64
+          push: false
+          tags: user/app:lates
