@@ -42,10 +42,27 @@ service:
   targetport: 5001
 
 ingress:
-  enabled: false
+  enabled: true
   className: "nginx"
   annotations: {}
   tls: []
+  hosts:
+    - host: ofekbb.com
+      paths:
+        - path: /post
+          pathType: Prefix
+          backend:
+            service:
+              name: backend
+              port:
+                number: 5001
+        - path: /back-health
+          pathType: Prefix
+          backend:
+            service:
+              name: backend
+              port:
+                number: 5001
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
