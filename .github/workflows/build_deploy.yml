@@ -31,3 +31,17 @@ jobs:
           file: ./${{ github.event.inputs.service_name }}/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/moon-${{ github.event.inputs.service_name }}:${{ github.run_number }}
+      -
+        name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-north-1
+      -
+        name: Update kubeconfig
+        run: aws eks update-kubeconfig --name moon
+      -
+        name: Deploy micro-service with helm chart
+        run: |
+          helm upgrade --install ${{ github.event.inputs.service_name }} ./${{ github.event.inputs.service_name }} --set image.tag=${{ github.run_number }} --wait
