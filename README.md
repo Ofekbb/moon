@@ -2,7 +2,7 @@
 ## Ready envirment:
 You can take a look on a running envirment: https://ofekbb.com
 Implimented with EKS \ ALB \ NGINX 
-![Alt text](draw.png)
+![Draw](draw.JPG)
 # Microservices Deployment with Kubernetes
 This project demonstrates the deployment of microservices on a Kubernetes cluster. The microservices are simple web applications that consume URLs from environment variables, send API requests, and return responses. The deployment is managed using Helm charts, allowing for easy configuration and scaling.
 
