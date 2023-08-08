@@ -48,4 +48,4 @@ jobs:
       -
         name: Run health check with helm test
         run: |
-          helm test ${{ github.event.inputs.service_name }} ./${{ github.event.inputs.service_name }}/helm --kubeconfig /home/runner/.kube/config
+          helm test ${{ github.event.inputs.service_name }}
