@@ -6,35 +6,45 @@ Getting Started
 Deploy a Kubernetes Cluster on your preferred platform.
 
 Clone this repository to set up the codebase for your microservices:
-
-bash
-Copy code
 ```
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/Ofekbb/moon.git
 ```
 
-Build and Deploy the Microservices using Helm:
-The microservices are deployed using Helm charts. Each service can be deployed with different configuration values by providing a values file.
-Set up GitHub Action Workflow:
-A GitHub Action workflow is included in the repository to automate the deployment process. This workflow can be triggered manually.
-Microservices
-Useless Fact Service
-Path: /uselessfact
+# Build and Deploy:
+The images are built as part of the github action pipeline proccess.
+The helm charts are deployed as part of the github action pipeline proccess.
+
+## MicroServices 
+# Frontend: 
+this microservice is responsible for rendering the UI and sending the url path to the backend,
+and recived backend api response  
+
+# Backend:
+this microservice post api request that it recived from the frontend, and send it back to the frontend.
+
+## Pathes
+# Path: /uselessfact
 Description: Retrieves a random fact from uselessfacts.jsph.pl.
-Funny Fact Service
-Path: /funnyfact
+
+# Path: /funnyfact
 Description: Retrieves a random Chuck Norris joke from api.chucknorris.io.
-Ready Service
-Path: /ready
-Description: Responds with a status code of 200, indicating that the service is ready.
-GitHub Action Workflow
-The workflow can be triggered manually and performs the following steps:
+
+# Path: /ready
+Description: Responds with a status code of 200 from backend service, indicating that the service is ready.
+
+# Path: /backend-health
+Description: Responds with a status code of 200 from backend service, indicating that the service is ready.
+
+
+## GitHub Action Workflow
+The workflow triggered manually and performs the following steps:
 Pulls the source code from the repository.
 Builds Docker images for the services, tagging them with the build number.
-Pushes the Docker images to a Docker registry.
-Deploys the services to the Kubernetes cluster using Helm charts and environment variables.
-Runs tests to verify correct responses from the deployed services.
-Bonus Features
+Pushes the Docker images to a Dockerhub registry.
+Deploys the services to the Kubernetes cluster using Helm charts.
+Runs tests with helm test to verify correct responses from the deployed services.
+
+
 The application has been configured to be resilient using Kubernetes features such as Pod replicas, liveness probes, and readiness probes.
 
 Ingress has been set up to split requests to the correct microservices using the same domain.
