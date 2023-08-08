@@ -44,4 +44,4 @@ jobs:
       -
         name: Deploy micro-service with helm chart
         run: |
-          helm upgrade --install ${{ github.event.inputs.service_name }} ./${{ github.event.inputs.service_name }} --set image.tag=${{ github.run_number }} --wait --kubeconfig /home/runner/.kube/config
+          helm upgrade --install ${{ github.event.inputs.service_name }} ./${{ github.event.inputs.service_name }}/helm --set image.tag=${{ github.run_number }} --wait --kubeconfig /home/runner/.kube/config
