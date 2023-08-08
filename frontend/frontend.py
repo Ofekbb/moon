@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request
 import requests, os
 
-
-# url_post = os.environ.get('POST_URL', 'http://backend-svc.default.svc.cluster.local:5001/post')
+# Post URL - if not exist in config map will take local host
 url_post = os.environ.get('POST_URL', 'http://127.0.0.1:5001/post')
+# Defualt API - Defualt value to send post request.
 def_api = os.environ.get('DEFUALT_API', 'https://api.chucknorris.io/jokes/random')
+# Response - Empty init value
 response = ""
 
 app = Flask(__name__)

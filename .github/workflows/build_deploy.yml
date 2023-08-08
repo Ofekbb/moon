@@ -27,7 +27,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: ./${{ github.event.inputs.service_name }}/
           file: ./${{ github.event.inputs.service_name }}/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/moon-${{ github.event.inputs.service_name }}:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/moon-${{ github.event.inputs.service_name }}:${{ github.sha }}
