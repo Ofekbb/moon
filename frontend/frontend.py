@@ -16,13 +16,17 @@ def render():
 
 @app.route('/', methods=['POST'])
 def post():
-    if request.method == 'POST':
-        url = request.form['url']
-        post_response = requests.post(url_post, json=url)
-        post_response_json = post_response.json()
-        print("from front",post_response_json)
-        return render_template('index.html', response=post_response_json)
-    
+    try:
+        if request.method == 'POST':
+            url = request.form['url']
+            post_response = requests.post(url_post, json=url)
+            post_response_json = post_response.json()
+            print("from front",post_response_json)
+            return render_template('index.html', response=post_response_json)
+    except:
+        response="Please provide correct URL!"
+        return render_template('index.html', response=response)
+
     return render_template('index.html')
 
 

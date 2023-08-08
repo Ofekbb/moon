@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Moon</title>
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/?size=512&id=67542&format=png">
     <style>
         body {
             /* background-color: #f0f0f0; */
@@ -76,8 +77,8 @@
 <body>
     <h1>Enter URL</h1>
     <form method = "POST">
-    <p><input type = "text" name = "url" value= {{ def_api }} /></p>
-    <p><input class = "button" type = "submit" value = "submit" /></p>
+    <p><input type= "text" name= "url" value= '{{ def_api }}' /></p>
+    <p><input class= "button" type= "submit" value= "submit" /></p>
     </form> 
     <div class="button-container">
     <button onclick="location.href = '/funnyfact';" id="funnyfact" class="button">ChuckFact</button>
