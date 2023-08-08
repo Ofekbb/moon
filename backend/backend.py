@@ -14,7 +14,7 @@ def post():
     return get_json
 
 # Define a simple health check
-@app.route('/back-health', methods=['POST'])
+@app.route('/back-health')
 def health():
     return 'Im Ready :)', 200
 
