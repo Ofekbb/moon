@@ -48,5 +48,4 @@ jobs:
       -
         name: Run health check with helm test
         run: |
-          sleep 20 &&
-          helm test ${{ github.event.inputs.service_name }}
+          sleep 25 && helm test ${{ github.event.inputs.service_name }}
