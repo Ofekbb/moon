@@ -1,4 +1,8 @@
 # Moon Active - Home Assignment
+## Ready envirment:
+You can take a look on a running envirment: https://ofekbb.com
+Implimented with EKS \ ALB \ NGINX 
+![Alt text](image.png)
 # Microservices Deployment with Kubernetes
 This project demonstrates the deployment of microservices on a Kubernetes cluster. The microservices are simple web applications that consume URLs from environment variables, send API requests, and return responses. The deployment is managed using Helm charts, allowing for easy configuration and scaling.
 
@@ -32,15 +36,17 @@ Description: Retrieves a random Chuck Norris joke from api.chucknorris.io.
 ## Path: /ready
 Description: Responds with a status code of 200 from backend service, indicating that the service is ready.
 
-## Path: /backend-health
+## Path: /back-health
 Description: Responds with a status code of 200 from backend service, indicating that the service is ready.
 
 
 # GitHub Action Workflow
-The workflow triggered manually and performs the following steps:
+The workflow triggered manually with name of the service as a parameter (frontend\backend) and performs the following steps:
 Pulls the source code from the repository.
 Builds Docker images for the services, tagging them with the build number.
 Pushes the Docker images to a Dockerhub registry.
 Deploys the services to the Kubernetes cluster using Helm charts.
 Runs tests with helm test to verify correct responses from the deployed services.
+
+
 
