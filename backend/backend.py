@@ -13,6 +13,11 @@ def post():
     print("from back GET",get_json)
     return get_json
 
+# Define a simple health check
+@app.route('/back-health', methods=['POST'])
+def health():
+    return 'Im Ready :)', 200
+
 if __name__ == '__main__':
     app.run("0.0.0.0",debug=True,port=5001)
 

@@ -10,5 +10,5 @@ spec:
   containers:
     - name: wget
       image: alpine
-      command: ['wget', '-q','{{ .Values.env.url }}/ready']
+      command: ['wget', '-q','{{ .Values.env.url }}/back-health']
   restartPolicy: Never

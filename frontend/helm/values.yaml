@@ -85,6 +85,13 @@ ingress:
               name: backend
               port:
                 number: 5001
+        - path: /back-health
+          pathType: Prefix
+          backend:
+            service:
+              name: backend
+              port:
+                number: 5001
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
