@@ -1,6 +1,5 @@
 # Moon 
 ## Ready environment:
-You can take a look on a running environment: https://ofekbb.com
 ![Draw](draw.JPG)
 # Microservices Deployment with Kubernetes
 This project demonstrates the deployment of microservices on a Kubernetes cluster. The microservices are simple web applications that consume URL from environment variables or from path\buttons, send API requests, and return responses. 
